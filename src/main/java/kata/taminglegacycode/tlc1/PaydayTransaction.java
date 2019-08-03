@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.Iterator;
 
 public class PaydayTransaction extends Transaction {
-    public PaydayTransaction(PayrollDatabase db, TransactionRecorder log) {
+    public PaydayTransaction(PayrollDatabase db, TransactionLog log) {
         super(db, log);
     }
 

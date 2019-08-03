@@ -2,9 +2,9 @@ package kata.taminglegacycode.tlc1;
 
 public class Transaction {
     final PayrollDatabase db;
-    final TransactionRecorder log;
+    final TransactionLog log;
 
-    public Transaction(PayrollDatabase db, TransactionRecorder log) {
+    public Transaction(PayrollDatabase db, TransactionLog log) {
         this.db = db;
         this.log = log;
     }
