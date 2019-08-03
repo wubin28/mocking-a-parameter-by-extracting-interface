@@ -9,10 +9,12 @@ public class PaydayTransaction extends Transaction {
     }
 
     public void run(Date date) {
-        for (Iterator it = super.db.getEmployees(); it.hasNext(); ) {
-            Employee e = (Employee) it.next();
-            if (e.isPayday(date)) {
-                e.pay();
+        if (db.getEmployees() != null) {
+            for (Iterator it = super.db.getEmployees(); it.hasNext(); ) {
+                Employee e = (Employee) it.next();
+                if (e.isPayday(date)) {
+                    e.pay();
+                }
             }
         }
         log.saveTransaction(this);

@@ -1,20 +1,21 @@
 package kata.taminglegacycode.tlc1;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
-/**
- * Unit test for simple PaydayTransaction.
- */
-public class PaydayTransactionTest
-{
-    /**
-     * Rigorous Test :-)
-     */
+import java.sql.Date;
+
+import static org.mockito.Mockito.*;
+
+public class PaydayTransactionTest {
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    public void save_transaction_should_be_logged_after_running() {
+        TransactionRecorder log = mock(TransactionRecorder.class);
+        PayrollDatabase db = new PayrollDatabase();
+        PaydayTransaction paydayTransaction = new PaydayTransaction(db, log);
+        Date date = new Date(System.currentTimeMillis());
+
+        paydayTransaction.run(date);
+
+        verify(log, times(1)).saveTransaction(any(PaydayTransaction.class));
     }
 }
